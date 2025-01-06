@@ -18,7 +18,8 @@ public class UserTests {
 		faker=new Faker();
 		userPayload=new User();
 		
-		userPayload.setId(faker.idNumber().hashCode());		
+		userPayload.setId(faker.idNumber().hashCode());	
+		userPayload.setUsername(faker.name().username());  
 		userPayload.setFirstName(faker.name().firstName());
 		userPayload.setLastName(faker.name().lastName());
 		userPayload.setEmail(faker.internet().emailAddress());
@@ -28,9 +29,20 @@ public class UserTests {
 	
 	@Test(priority = 1)
 	public void testPostUser() {
+		System.out.println(userPayload.getId());
+		System.out.println(userPayload.getUsername());
+		System.out.println(userPayload.getFirstName());
+		
 		Response response=UserEndPoints.createUser(userPayload);
 		response.then().log().all();
 		
 		Assert.assertEquals(response.getStatusCode(), 200);		
 	}
+	@Test(priority = 2)
+	public void testDeleteUserByName() {
+		
+		Response response=UserEndPoints.deleteUser(this.userPayload.getUsername());
+		Assert.assertEquals(response.getStatusCode(), 200);	
+		
+		}
 }

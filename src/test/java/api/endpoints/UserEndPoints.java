@@ -17,8 +17,9 @@ public class UserEndPoints {
 	public static Response createUser(User payload) {
 		
 		String post_url=resourceBundle.getString("post_url");
+		
 		//String post_url="https://petstore.swagger.io/v2/user";
-		System.out.println("=======>"+post_url);
+		//System.out.println("=======>"+post_url);
 		
 		Response response=given()
 					.contentType(ContentType.JSON)
@@ -28,6 +29,19 @@ public class UserEndPoints {
 					.post(post_url);	
 		
 		return response;				
+	}
+	
+	public static Response deleteUser(String userName) {
+		
+		String delete_url=resourceBundle.getString("delete_url");
+		System.out.println("=======>"+delete_url);
+		System.out.println("=======>"+userName);
+		Response response= given()
+					.pathParam("username", userName)
+				.when()
+				   .delete(delete_url);
+				
+		return response;		
 	}
 	
 
