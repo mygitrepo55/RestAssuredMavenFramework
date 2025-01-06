@@ -34,7 +34,7 @@ public void testPostUser(String id, String username, String firstName, String la
 	userPayload=new User();
 	
 	userPayload.setId(Integer.parseInt(id));	
-	userPayload.setFirstName(username);
+	userPayload.setUsername(username);
 	userPayload.setFirstName(firstName);
 	userPayload.setLastName(lastName);
 	userPayload.setEmail(email);

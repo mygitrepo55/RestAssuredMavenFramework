@@ -34,8 +34,7 @@ public class UserEndPoints {
 	public static Response deleteUser(String userName) {
 		
 		String delete_url=resourceBundle.getString("delete_url");
-		System.out.println("=======>"+delete_url);
-		System.out.println("=======>"+userName);
+	
 		Response response= given()
 					.pathParam("username", userName)
 				.when()
